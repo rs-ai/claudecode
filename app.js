@@ -26,6 +26,15 @@
         return Math.min(weekNumber, 52);
     }
 
+    // Update affirmation display
+    function updateAffirmation(week) {
+        const affirmationEl = document.getElementById('affirmationText');
+        if (affirmationEl && typeof AFFIRMATIONS !== 'undefined') {
+            const index = Math.max(0, Math.min(week - 1, 51)); // 0-indexed, capped at 51
+            affirmationEl.textContent = `"${AFFIRMATIONS[index]}"`;
+        }
+    }
+
     // Generate week grid
     function renderGrid() {
         const grid = document.getElementById('weekGrid');
@@ -34,6 +43,9 @@
         // Update progress info
         document.getElementById('currentWeek').textContent = Math.max(1, currentWeek);
         document.getElementById('progressPercent').textContent = Math.round((Math.max(0, currentWeek - 1) / 52) * 100);
+
+        // Update affirmation
+        updateAffirmation(Math.max(1, currentWeek));
 
         // Clear existing grid
         grid.innerHTML = '';

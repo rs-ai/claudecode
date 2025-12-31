@@ -189,6 +189,33 @@ h1 {
     background: transparent;
 }
 
+/* Affirmation Card */
+.affirmation-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(232,196,196,0.3) 100%);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid rgba(232, 196, 196, 0.3);
+}
+
+.affirmation-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    margin: 0 0 12px 0;
+}
+
+.affirmation-text {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin: 0;
+}
+
 /* Check-in Card */
 .checkin-card {
     background: rgba(255, 255, 255, 0.85);
