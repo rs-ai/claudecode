@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom 2026 - Your Year in Bloom</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bloom 2026</h1>
+            <p class="tagline">52 weeks to grow</p>
+        </header>
+
+        <div class="progress-info">
+            <span class="week-label">Week <span id="currentWeek">1</span> of 52</span>
+            <span class="year-progress"><span id="progressPercent">0</span>% of your year</span>
+        </div>
+
+        <div class="grid-container">
+            <div id="weekGrid" class="week-grid">
+                <!-- 52 weeks will be generated here -->
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <span class="dot bloomed"></span>
+                <span>Bloomed</span>
+            </div>
+            <div class="legend-item">
+                <span class="dot current"></span>
+                <span>This week</span>
+            </div>
+            <div class="legend-item">
+                <span class="dot upcoming"></span>
+                <span>Upcoming</span>
+            </div>
+        </div>
+
+        <!-- Check-in Card -->
+        <div class="checkin-card">
+            <div id="checkinContent">
+                <!-- Not Connected State -->
+                <div id="stateNotConnected" class="checkin-state">
+                    <p class="checkin-title">Show up on-chain</p>
+                    <p class="checkin-subtitle">Connect your wallet to check in for the week</p>
+                    <button id="btnConnect" class="btn btn-primary">
+                        Connect Wallet
+                    </button>
+                </div>
+
+                <!-- Connected State -->
+                <div id="stateConnected" class="checkin-state" style="display: none;">
+                    <div class="wallet-info">
+                        <span class="wallet-dot"></span>
+                        <span id="walletAddress" class="wallet-address">0x...</span>
+                        <button id="btnDisconnect" class="btn-text">disconnect</button>
+                    </div>
+                    <p class="checkin-title">Check in for Week <span id="checkinWeek">1</span></p>
+                    <p class="checkin-cost">
+                        Cost: ~$0.01<br>
+                        <span class="cost-note">100% is Base network fee. We take nothing.</span>
+                    </p>
+                    <button id="btnCheckIn" class="btn btn-primary">
+                        Check In
+                    </button>
+                </div>
+
+                <!-- Checking In State -->
+                <div id="stateChecking" class="checkin-state" style="display: none;">
+                    <div class="spinner"></div>
+                    <p class="checkin-title">Confirming on-chain...</p>
+                    <p class="checkin-subtitle">Please confirm in your wallet</p>
+                </div>
+
+                <!-- Success State -->
+                <div id="stateSuccess" class="checkin-state" style="display: none;">
+                    <div class="success-icon">✓</div>
+                    <p class="checkin-title">You're on-chain!</p>
+                    <p class="checkin-subtitle">Week <span id="successWeek">1</span> check-in recorded forever</p>
+                    <a id="txLink" href="#" target="_blank" class="tx-link">View transaction →</a>
+                </div>
+
+                <!-- Already Checked In State -->
+                <div id="stateAlready" class="checkin-state" style="display: none;">
+                    <div class="already-icon">✓</div>
+                    <p class="checkin-title">Already checked in!</p>
+                    <p class="checkin-subtitle">You showed up for Week <span id="alreadyWeek">1</span></p>
+                    <p class="checkin-note">Come back next week</p>
+                </div>
+
+                <!-- Error State -->
+                <div id="stateError" class="checkin-state" style="display: none;">
+                    <p class="checkin-title">Something went wrong</p>
+                    <p id="errorMessage" class="checkin-subtitle error-text">Error message here</p>
+                    <button id="btnRetry" class="btn btn-secondary">
+                        Try Again
+                    </button>
+                </div>
+
+                <!-- Wrong Network State -->
+                <div id="stateWrongNetwork" class="checkin-state" style="display: none;">
+                    <p class="checkin-title">Wrong Network</p>
+                    <p class="checkin-subtitle">Please switch to Base network</p>
+                    <button id="btnSwitchNetwork" class="btn btn-primary">
+                        Switch to Base
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Your journey, one week at a time</p>
+        </footer>
+    </div>
+
+    <!-- ethers.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.9.0/dist/ethers.umd.min.js"></script>
+    <script src="app.js"></script>
+    <script src="wallet.js"></script>
+</body>
+</html>
